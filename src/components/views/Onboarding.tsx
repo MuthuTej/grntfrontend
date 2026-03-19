@@ -77,14 +77,45 @@ export function Onboarding({ userId, onComplete }: OnboardingProps) {
       };
       console.log("[Onboarding] Calling ML route with payload:", mlPayload);
       
-      const res = await fetch("http://127.0.0.1:8000/match-grants", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(mlPayload)
-      });
-      console.log("[Onboarding] ML route response status:", res.status);
+      // const res = await fetch("http://127.0.0.1:8000/match-grants", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(mlPayload)
+      // });
+      // console.log("[Onboarding] ML route response status:", res.status);
+      // if (res.ok) {
+      //   const mlData = await res.json();
+
+      // USING MOCK DATA INSTEAD OF FETCHING:
+      const res = { ok: true, status: 200 };
+      console.log("[Onboarding] ML route response status (MOCKED):", res.status);
       if (res.ok) {
-        const mlData = await res.json();
+        const mlData = [
+          {
+            title: "Community Climate Action Grant",
+            award_ceiling: 100000,
+            deadline: "2026-08-15",
+            agency: "Environmental Protection Agency",
+            match_score: 92,
+            url: "https://grants.gov/example1"
+          },
+          {
+            title: "Youth STEM Empowerment Fund",
+            award_ceiling: 75000,
+            deadline: "2026-11-01",
+            agency: "National Science Foundation",
+            match_score: 88,
+            url: "https://grants.gov/example2"
+          },
+          {
+            title: "Urban Sustainability Initiative",
+            award_ceiling: 250000,
+            deadline: "2027-01-30",
+            agency: "Department of Energy",
+            match_score: 85,
+            url: "https://grants.gov/example3"
+          }
+        ];
         console.log("[Onboarding] ML route received data:", mlData);
         matchedGrants = mlData.map((g: any, i: number) => ({
           id: `ml-grant-${Date.now()}-${i}`,
