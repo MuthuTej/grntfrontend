@@ -1,14 +1,98 @@
 import { Grant, Organization } from "../types";
 
 export const generateGrants = async (query: string): Promise<Grant[]> => {
-  try {
-    const response = await fetch(`/api/grants?q=${encodeURIComponent(query)}`);
-    if (!response.ok) throw new Error("Network response was not ok");
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching grants:", error);
-    return [];
-  }
+  // try {
+  //   const response = await fetch(`/api/grants?q=${encodeURIComponent(query)}`);
+  //   if (!response.ok) throw new Error("Network response was not ok");
+  //   return await response.json();
+  // } catch (error) {
+  //   console.error("Error fetching grants:", error);
+  //   return [];
+  // }
+
+  // USING MOCK DATA INSTEAD OF FETCHING:
+  return [
+    {
+      id: "mock-1",
+      title: "Community Climate Action Grant",
+      amount: "$100,000",
+      deadline: "2026-08-15",
+      portal: "Environmental Protection Agency",
+      matchScore: 92,
+      description: "This grant maps well to your primary focus areas.",
+      url: "https://grants.gov/example1",
+      matchReason: "AI matching score of 92",
+      probability: 92,
+      probabilityReason: "Based on mock similarity model.",
+      requirements: ["Eligible organization", "Matches agency mission", "Timely submission"],
+      location: "USA",
+      type: "Government"
+    },
+    {
+      id: "mock-2",
+      title: "Youth STEM Empowerment Fund",
+      amount: "$75,000",
+      deadline: "2026-11-01",
+      portal: "National Science Foundation",
+      matchScore: 88,
+      description: "Strong alignment with educational themes.",
+      url: "https://grants.gov/example2",
+      matchReason: "AI matching score of 88",
+      probability: 88,
+      probabilityReason: "Based on mock similarity model.",
+      requirements: ["Youth-centric programs", "Research component"],
+      location: "USA",
+      type: "Government"
+    },
+    {
+      id: "mock-3",
+      title: "Urban Sustainability Initiative",
+      amount: "$250,000",
+      deadline: "2027-01-30",
+      portal: "Department of Energy",
+      matchScore: 85,
+      description: "Ideal for city-level infrastructure changes.",
+      url: "https://grants.gov/example3",
+      matchReason: "AI matching score of 85",
+      probability: 85,
+      probabilityReason: "Based on mock similarity model.",
+      requirements: ["Urban location", "Demonstrable impact"],
+      location: "USA",
+      type: "Government"
+    },
+    {
+      id: "mock-4",
+      title: "Local Community Arts Program",
+      amount: "$15,000",
+      deadline: "Rolling",
+      portal: "National Endowment for the Arts",
+      matchScore: 70,
+      description: "Good for local community engagement projects.",
+      url: "https://grants.gov/example4",
+      matchReason: "AI matching score of 70",
+      probability: 70,
+      probabilityReason: "Based on mock similarity model.",
+      requirements: ["Arts focus", "Community involvement"],
+      location: "USA",
+      type: "Government"
+    },
+    {
+      id: "mock-5",
+      title: "Tech For Good Startup Grant",
+      amount: "$50,000",
+      deadline: "2026-12-15",
+      portal: "Private Foundation",
+      matchScore: 65,
+      description: "Supports innovative technological solutions.",
+      url: "https://grants.gov/example5",
+      matchReason: "AI matching score of 65",
+      probability: 65,
+      probabilityReason: "Based on mock similarity model.",
+      requirements: ["Tech solutions", "Scalable impact"],
+      location: "USA",
+      type: "Private"
+    }
+  ] as any;
 };
 
 export const generateApplicationContent = async (grant: Grant, org: Organization) => {
