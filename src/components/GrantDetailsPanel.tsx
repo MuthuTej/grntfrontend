@@ -31,7 +31,7 @@ export function GrantDetailsPanel({ grant, onClose, onApply }: GrantDetailsPanel
             <span className="text-blue-400">Deadline: {grant.deadline}</span>
           </div>
         </div>
-        <button onClick={onClose} className="text-zinc-500 hover:text-white transition-colors">
+        <button onClick={onClose} aria-label="Close grant details" className="text-zinc-500 hover:text-white transition-colors">
           <X size={20} />
         </button>
       </div>
@@ -123,16 +123,6 @@ export function GrantDetailsPanel({ grant, onClose, onApply }: GrantDetailsPanel
           Apply to Grant <ArrowRight size={18} />
         </button>
         
-        {grant.url && (
-          <a 
-            href={grant.url} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="w-full bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-medium py-2 rounded-lg border border-white/5 transition-colors flex items-center justify-center gap-2 text-sm"
-          >
-            View Verified Source <ArrowRight size={14} />
-          </a>
-        )}
       </div>
     </motion.div>
   );

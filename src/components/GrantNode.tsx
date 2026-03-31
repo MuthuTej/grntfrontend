@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Handle, Position } from "@xyflow/react";
-import { DollarSign, Calendar, ExternalLink, ShieldCheck } from "lucide-react";
+import { DollarSign, Calendar, ShieldCheck } from "lucide-react";
 import { motion } from "motion/react";
 
 export const GrantNode = memo(({ data, selected }: any) => {
@@ -54,18 +54,6 @@ export const GrantNode = memo(({ data, selected }: any) => {
             <span>Verified Source</span>
           </div>
           <div className="flex items-center gap-2">
-            {data.url && (
-              <a 
-                href={data.url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-[10px] flex items-center gap-1 text-zinc-400 hover:text-white transition-colors p-1 hover:bg-white/5 rounded"
-                onClick={(e) => e.stopPropagation()}
-                title="Open Official Grant Page"
-              >
-                <ExternalLink size={12} />
-              </a>
-            )}
             <button className="text-[10px] flex items-center gap-1 text-cyan-400 hover:text-cyan-300 transition-colors">
               View Details
             </button>
